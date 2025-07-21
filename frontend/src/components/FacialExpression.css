@@ -5,12 +5,13 @@ align-items: center;
 justify-content:center;
 gap: 4rem;
 padding: 4rem;
+margin-left: 6rem;
 
 }
 
 .video-container{
    
-    width: 30rem;
+    width: 33rem;
     aspect-ratio: 16/9;
     border-radius: 2rem;
     object-fit: cover  ;
@@ -24,6 +25,13 @@ padding: 4rem;
     border-radius: 1rem;
     outline: none;
     border: none;
+    background-color: #1ED860;
+    cursor: pointer;
     
-    
+}
+.video-button-container button:hover{
+    background: #28673e;
+}
+.video-button-container button:active{
+scale:0.97;
 }

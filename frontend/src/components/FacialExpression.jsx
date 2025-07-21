@@ -1,7 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import * as faceapi from 'face-api.js';
 import './FacialExpression.css'
-export default function FacialExpression() {
+import axios from 'axios'
+
+
+
+
+
+export default function FacialExpression({setsongs}) {
+
 const videoRef = useRef();
 const loadModels = async () => {
 const MODEL_URL = '/models';
@@ -37,8 +44,17 @@ for(const expression of Object.keys(detections[0].expressions)){
   }
 }
 console.log(_expression);
+ await axios.get(`http://localhost:3000/songs?mood=${_expression}`)
+ .then(response=>{
+  console.log(response.data.song[0]);
+  setsongs(response.data.song)
+  
+ })
+// console.log(data.song);
+// setsongs(data.song)
 
 }
+
 useEffect(() => {
   
 
@@ -48,7 +64,8 @@ loadModels().then(startVideo);
 }, []);
 
 return (
-<div className='video-button-container'>
+<div>
+  <div className='video-button-container'>
 <video
 ref={videoRef}
 autoPlay
@@ -59,6 +76,7 @@ className='video-container'
 
 </div>
 
+</div>
 
 );
 }
