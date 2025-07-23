@@ -32,9 +32,7 @@ console.log(filedata);
 
       };
 
-      // Save to MongoDB (replace with your model)
-      // await Song.create(songObject);
-
+      
       uploadedSongs.push(songObject);
       const newSong = await songModel.create({
         title: titles[i],
